@@ -5,7 +5,8 @@ describe "test"{
 
 //*********** OBJETOS PUNTO 1 *************
 
-//una persona de 37 años sin habilidades de cocina (para el ultimo punto del examen es Sencillo) 
+//una persona de 37 años sin habilidades de cocina (para el ultimo punto del examen es Sencillo)
+//TODO: Usar valores defaults! 
 	var leo =new Persona(duenioDe = #{}, edad = 37, buenCocinero = false,estaEn=null)
 
 //una persona de 29 anios con habilidades de cocina (para el ultimo punto del examen es Obsesiva)
@@ -14,6 +15,7 @@ describe "test"{
 //una persona de 3 anios sin habilidades de cocina (para el ultimo punto del examen es Golosa)
 	var milena =new Persona(duenioDe = #{}, edad = 3, buenCocinero = false,estaEn=null)
 
+//TODO: el confort no debería ser seteado desde afuera de la clase porque es una regla de negocio
 //una habitacion de uso general
 	var comedor =new General(confort=10)
 

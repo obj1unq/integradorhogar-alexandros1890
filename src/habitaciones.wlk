@@ -1,3 +1,16 @@
+//TODO: Nota: 5 cinco 
+
+//test: pasa valores iniciales. Solo los test del punto 1 andan
+//1.1 MB- (usa alguna variable innecesaria)
+//1.2 MB- (método innecesario)
+//2.1 MB
+//2.2 MB
+//2.3 R: Está bien lo de excepciones, pero no cumple el requerimiento consistentemente, ya que no modifica los ocupantes de las habitaciones
+//3.1 MB-
+//3.2 M
+//3.3 y 3.4 No lo hace
+
+
 class Casa{
 	var property habitaciones=#{}
 	
@@ -5,6 +18,7 @@ class Casa{
 		return habitaciones.filter({e=>not e.estaVacia()})
 	}
 	method ocupantesDeLaCasa(){
+		//TODO: No, debe ser un map sobre las habitacionesOcupadas
 		habitaciones.filter({e=>e.ocupantes()})
 	}
 //	method responsables(){
@@ -16,6 +30,7 @@ class Casa{
 }
 
 class Habitacion{
+	//TODO: Variable innecesaria, siempre es 10!
 	var property confort=10
 	var property ocupantes=#{}
 	
@@ -24,6 +39,7 @@ class Habitacion{
 	
 	}
 	method estaVacia(){
+		//TODO: usar isEmpty
 		return ocupantes.size()==0
 	}
 	method puedeEntrar(unaPersona){
@@ -34,6 +50,7 @@ class Habitacion{
 	}
 }
 
+//TODO: Esta clase es innecesaria porque no aporta comportamiento
 class General inherits Habitacion{
 	
 }
@@ -80,6 +97,8 @@ class Dormitorio inherits Habitacion{
 		return duenios.size()
 	}
 	method estanLosDuenios(){
+		//TODO: Usar mejor los métodos de colecciones, sin comparar con tamaños:
+		///return duenios.all({duenio=>self.estaEnLaHabitacion(duenio))
 		return duenios.intersection(ocupantes).size()==self.cantidadDeDuenios()
 	}
 	
@@ -94,6 +113,8 @@ class Dormitorio inherits Habitacion{
 			   unaPersona.esDuenio(self) or
 			   self.estanLosDuenios()
 	}
+	//TODO: esté método conviene que esté en la superclase, ya que el concepto de "ocuapantes"
+	//es algo que está en la superclase
 	method estaEnLaHabitacion(unaPersona){
 		ocupantes.contains(unaPersona)
 	}
@@ -123,6 +144,8 @@ class Persona{
 	method entrarA(unaHabitacion){
 		if(unaHabitacion.puedeEntrar(self)){
 		estaEn=unaHabitacion
+		//TODO: Falta modificar la listas de ocupantes de la habitacion, tanto 
+		//de la habitación que sale como de la que entra
 		}else{
 		self.error("No puede entrar")	
 	}
@@ -130,7 +153,8 @@ class Persona{
 }
 }
 object extraCocina{
-	var property porcentaje = 10 
+	var property porcentaje = 10
+	//TODO: si es una property este método está de más, porque ya tiene un mensaje porcentaje(valor) que hace lo mismo 
 	method cambiarPorcentaje(unPorcentaje){
 		porcentaje=unPorcentaje
 	}
